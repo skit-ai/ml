@@ -7,6 +7,11 @@ module.exports = {
   siteMetadata: {
     siteTitle: `Machine Learning at Vernacular.ai`,
     siteTitleAlt: `Machine Learning | Vernacular.ai`,
+    siteHeadline: `Machine Learning | Vernacular.ai`,
+    siteUrl: `https://vernacular-ai.github.io/ml`,
+    siteDescription: `Notes from the Machine Learning team at Vernacular.ai`,
+    siteImage: ``,
+    author: ``
   },
   plugins: [
     {
@@ -29,6 +34,10 @@ module.exports = {
           }
         ],
         externalLinks: [
+          {
+            name: `feed`,
+            url: `https://vernacular-ai.github.io/ml/rss.xml`,
+          },
           {
             name: `github`,
             url: `https://github.com/Vernacular-ai`,
