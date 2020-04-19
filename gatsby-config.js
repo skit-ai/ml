@@ -3,6 +3,7 @@ require(`dotenv`).config({
 })
 
 module.exports = {
+  pathPrefix: `/ml`,
   siteMetadata: {
     siteTitle: `Machine Learning at Vernacular.ai`,
     siteTitleAlt: `Machine Learning | Vernacular.ai`,
