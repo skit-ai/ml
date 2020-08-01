@@ -14,6 +14,14 @@ module.exports = {
     author: ``
   },
   plugins: [
+{
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        `gatsby-remark-mathjax`,
+      ],
+    },
+  },
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       options: {
