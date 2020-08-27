@@ -28,12 +28,7 @@ author: anirudhdagar
 
 #### Diarization Introduction - Who spoke when? 
 
-Speech processing systems can be broadly split into two categories:
-
-+ **Speech Recognition**: Task of detecting and identifying words in the spoken language.
-+ **Speaker Recognition**: Task of identifying speakers in a conversation.
-
-Speaker Diarization falls in the second category of speech processing where it is required to identify the speaker along with identification of the boundary/frame of the speech region of a particular speaker.
+Speaker diarisation (or diarization) is the process of partitioning an input audio stream into homogeneous segments according to the speaker identity.
 
 > Speaker diarization is the process of recognizing “who spoke when.” 
 
@@ -84,7 +79,7 @@ There is a fine line between speaker diarization and other related speech proces
 
 With the rise of speech recognition systems both in terms of scale and accuracy, the ability to process audio of multiple speakers is crucial and has become quintessential to understand speech today.
 
-As illustrated in **Fig 1.** above, information gained through diarization helps in enriching and improving Spoken Language Understanding (SLU) based on the Automatic Speech Recognition (ASR) transcription. This can be valuable for downstream applications such as analytics for call-center transcription and meeting transcription etc.
+As illustrated in **Fig 1.** above, information gained through diarization helps in enriching and improving Spoken Language Understanding (SLU) based on the Automatic Speech Recognition (ASR) transcription. It can enhance the readability of the transcription by structuring the audio stream into speaker turns and, when used together with speaker recognition systems, by providing the speaker’s true identity. This can be valuable for downstream applications such as analytics for call-center transcription and meeting transcription etc.
 
 Other than this, we at [Vernacular.ai](https://vernacular.ai/) work on ***Call Center Automation (CCA)*** among many other speech domains, and, at the very core this is powered by our products [VIVA](https://vernacular.ai/viva) and [VASR](https://vernacular.ai/vasr). Information gained through diarization can be used to strengthen the VASR engine. 
 
@@ -94,7 +89,7 @@ Let me explain the goal of every customer care call support service, if you are 
 
 During the quality check phase, an *AGENT's* performance is scored on mutiple parameters, such as (but not limited to):
 
-+ Whether the agent was patient enough listeing to the customer or was rushing on the call
++ Whether the agent was patient enough listening to the customer or was rushing on the call
 + Whether she/he was rude to the lead at any time or not
 + Whether she/he used the proper language to communicate.
 
@@ -205,7 +200,7 @@ A systems, that is able to accurately handle **highly interactive** and **overla
 
 + **Embedder** — [Resemblyzer](https://github.com/resemble-ai/Resemblyzer) allows you to derive a high-level representation of a voice through a deep learning model (referred to as the voice encoder). Given an audio file of speech, it creates a summary vector of size 256 (embedding) that summarizes the characteristics of the voice spoken.
 
-+ **Clustering** — Finally we cluster the segment wise embedding using a simple **K-Means** to produce diarization results and determine the number of speakers with each speakers time stamps.
++ **Clustering** — We cluster the segment wise embedding using a simple **K-Means** to produce diarization results and determine the number of speakers with each speakers time stamps.
 
 + **Resegmentation** - Finally, an optional supervised classification step may be applied to actually identity every speaker cluster in a supervised way.
 
