@@ -11,22 +11,20 @@ author: anirudhdagar
 
 # Contents
 
-<span style="color:red"> <b>TODO: Fix Links</b> </span>
-
-+ [Diarization Introduction](####diarization-introduction-who-spoke-when?) 
-+ [Motivation](####motivation)
-+ [DIHARD?]()
-+ [Approaching the Problem]()
-+ [Defining Our Problem]()
-+ [Method]()
-+ [Evaluation Metrics]()
-+ [Resegmentation]()
-+ [UIS-RNN]()
-+ [Simulated Data Generation]()
++ [Diarization Introduction](#intro) 
++ [Motivation](#motivation)
++ [DIHARD?](#dihard)
++ [Approaching the Problem](#approach)
++ [Defining Our Problem](#define)
++ [Method](#method)
++ [Evaluation Metrics](#metric)
++ [Resegmentation](#resegmentation)
++ [UIS-RNN](#uis-rnn)
++ [Simulated Data Generation](#simulated_data_gen)
 
 <hr/>
 
-#### Diarization Introduction - Who spoke when? 
+#### <a name="intro"></a> Diarization Introduction - Who spoke when? 
 
 Speaker diarisation (or diarization) is the process of partitioning an input audio stream into homogeneous segments according to the speaker identity.
 
@@ -70,7 +68,7 @@ There is a fine line between speaker diarization and other related speech proces
 
 <hr/>
 
-### Motivation?
+### <a name="motivation"></a> Motivation?
 
 <figure>
   <img alt="Can't See? Something went wrong!" src="./speaker_diarization_vernacular.png">
@@ -108,7 +106,7 @@ Speaker Diarization is the solution for those problems.
 
 <hr/>
 
-### DIHARD? 
+### <a name="dihard"></a> DIHARD? 
 
 This is not <u>2x2=4</u>. This is **Diarization** and ***IT IS HARD***. One can say that it is one of the toughest ML problems intrinsically high on complexity, even for a human-being, in certain conditions. 
 
@@ -153,7 +151,7 @@ If I have not made my point clear about the complexity of the problem, yet, then
 
 <hr/>
 
-### Approaching the problem
+### <a name="approach"></a> Approaching the problem
 
 Keeping in mind the complexity and hardness of the problem, multiple approaches have been devised over the years to tackle diarization. Some earlier approaches were based on Hidden Markov Models (HMMs)/ Gaussian Mixture Models (GMMs). More recently, Neural Embedding (x-vectors/d-vectors) + Clustering and End2End Neural methods have demonstrated their power.
 
@@ -178,7 +176,7 @@ One example is ***[EEND: End2End Neural Diarization](https://arxiv.org/abs/1909.
 
 <hr/>
 
-### Defining Our Problem
+### <a name="define"></a> Defining Our Problem
 
 We need to answer the question *"What should be a robust diarization system?"* before moving forward. We decided to try out multiple approaches and model experiments explained in the sections below.
 
@@ -187,7 +185,7 @@ A systems, that is able to accurately handle **highly interactive** and **overla
 
 <hr/>
 
-### Method
+### <a name="method"></a> Method
 
 <figure>
   <img alt="Can't See? Something went wrong!" src="./diarization_pipeline.png">
@@ -206,7 +204,7 @@ A systems, that is able to accurately handle **highly interactive** and **overla
 
 <hr/>
 
-#### Evaluation Metrics (Diarization Error Rate)
+#### <a name="metric"></a> Evaluation Metrics (Diarization Error Rate)
 
 To evaluate the performance or to estimate the influence of errors on the complete pipeline, we use the standard metrics implemented in [`pyannote-metrics`](https://pyannote.github.io/pyannote-metrics/reference.html). We also need to account for the fact that these time-stamps are manually annotated by data-annotators and hence cannot be precise at the audio sample level. It is a common practice in speaker diarization research to remove a fixed collar around each speaker turn boundary from being evaluated using our metric of choice. A 0.4sec collar would exclude 200ms before and after the boundary.
 
@@ -226,7 +224,7 @@ $$
 
 <hr/>
 
-#### Resegmentation
+#### <a name="resegmentation"></a> Resegmentation
 
 As stated earlier, speaker diarization consists of automatically partitioning an input audio stream into homogeneous segments (segmentation) and assigning these segments to the same speaker (speaker clustering). Read more about segmentation [here](https://pyannote.github.io/pyannote-metrics/reference.html#segmentation).
 
@@ -283,7 +281,7 @@ Overall all the above steps regarding a supervised resegmentation model were com
 
 <hr/>
 
-#### UIS-RNN
+#### <a name="uis-rnn"></a> UIS-RNN
 
 To explore more supervised methods, we also experimented with [Fully Supervised Speaker Diarization](https://arxiv.org/abs/1810.04719) or the UIS-RNN model, the current state of the art neural system for Speaker Diarization. Converting data to UIS Style format involves a set of preprocessing steps similar to what we had to for our supervised resegmentation model. More on the official [UIS-RNN Repo](https://github.com/google/uis-rnn).
 
@@ -292,7 +290,7 @@ But a caveat with UIS-RNN is that it requires huge amounts of data to form a con
 
 <hr/>
 
-#### Simulated Data Generation
+#### <a name="simulated_data_gen"></a> Simulated Data Generation
 
 <figure>
   <img alt="Can't See? Something went wrong!" src="./sim_dia_data_generator_flow.jpg">
