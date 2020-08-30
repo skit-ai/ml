@@ -1,1 +1,1 @@
-{"componentChunkName":"component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tags-query-tsx","path":"/tags","result":{"data":{"allPost":{"group":[]}},"pageContext":{}}}
+{"componentChunkName":"component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tags-query-tsx","path":"/tags","result":{"data":{"allPost":{"group":[{"fieldValue":"Diarization Data Simulation","totalCount":1},{"fieldValue":"Speaker Diarization","totalCount":1},{"fieldValue":"Speech ML","totalCount":1}]}},"pageContext":{}}}
