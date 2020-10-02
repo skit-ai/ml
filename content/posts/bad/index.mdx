@@ -1,11 +1,9 @@
 ---
-title: BAD (Bad Audio Detector)
+title: Bad Audio Detection
 date: 2020-07-29
-tags: [Speech ML, Bad Audio Classification]
+tags: [Audio Classification]
 author: anirudhdagar
 ---
-
-** NOTE: This is a Draft version. There can be typos and unreferenced quotes.**
 
 This blog will be a short one, where we'll talk about our approach on filtering out inscrutable audios from [**VASR**](https://vernacular.ai/vasr).
 
@@ -39,11 +37,11 @@ All the raw labels were not very useful, hence we clean and preprocess the data 
 We needed to understand the class imbalance and hence we plot a histogram representing number of samples for each class.
 
 <figure>
-  <img alt="Can't See? Something went wrong!" src="./Class_Distribution.png" >
+  <img alt="Can't See? Something went wrong!" src="./Class_Distribution.png" />
 </figure>
 
 <figure>
-  <img alt="Can't See? Something went wrong!" src="./EDA.png">
+  <img alt="Can't See? Something went wrong!" src="./EDA.png" />
 </figure>
 
 
@@ -66,7 +64,7 @@ We used a standard audio classification pipeline to train our binary classificat
 This involves generating log-mel spectrograms and then running a Convolution Neural Network (CNN) based feature extractor on top of this fixed size spectrogram image.
 
 <figure>
-  <img alt="Can't See? Something went wrong!" src="./model_architecture.png" >
+  <img alt="Can't See? Something went wrong!" src="./model_architecture.png" />
   <figcaption><b><center>Binary Audio Classification based on Log-Mel Spectrograms</center></b></figcaption>
 </figure>
 
