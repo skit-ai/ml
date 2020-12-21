@@ -43,13 +43,11 @@ Within the class of exact likelihood models, normalizing flows provide two key a
 
 Let, $z_0$ be a continuous random variable belonging to a simple probability distribution $p_\theta(z_0)$ . Let it be a Gaussian with parameters $(\mu, \sigma) = (0,1)$.
 
-
-                            $$z_0 \sim p_\theta (z_0) = N(z_0;0,1)$$
+$$z_0 \sim p_\theta (z_0) = N(z_0;0,1)$$
 
 Normalizing flows transforms the simple distribution, into a desired output probability distribution with random variable $x$, with a sequence of invertible transformations, $f_i's$. 
 
-
-                            $$z_k = f_\theta (z_0) = f_k...f_2.f_1(z_0)$$       s.t. each $$f_i$$ is invertible (bijective)
+$$z_k = f_\theta (z_0) = f_k...f_2.f_1(z_0)$$       s.t. each $f_i$ is invertible (bijective)
 
 The composition of all the individual flows is represented by $f_\theta$. Since each $f_i$ is bijective, so is $f_\theta$. The new density $p_\theta (z_k)$ is called a *push forward* of the initial density $p_\theta(z_0)$ by the function $f_\theta.$
 
@@ -69,21 +67,19 @@ Consider the normalizing flow $f_1 : Z_0 \rightarrow Z_1$.  If we want the proba
 Consider the event $z_0 \sim Z$, mapped to $z_1 \sim Z_1$ s.t. $f_1(z_0) = z_1$. Since, the mapping is bijective, the probabilities of the events are the same. Therefore, 
 
     
-                         $$p_\theta(z_1)*\partial z_1 = p_\theta(z_0)*\partial z_0$$ 
-                        $$p_\theta(z_1) = p_\theta(z_0)* \frac{\partial z_0}{\partial z_1}$$             
-                        $$p_\theta(z_1) = p_\theta(z_0)* |\frac{\partial z_0}{\partial z_1}|$$             [since probabilities are always > 0]
-                        $$p_\theta(z_1) = p_\theta(z_0)* |\frac{\partial z_0}{\partial f_1(z_0)}|$$         [ $$z_1 = f_1(z_0)$$ ]
-                        $$p_\theta(z_1) = p_\theta(z_0)* |\frac{\partial f_1(z_0)}{\partial z_0}|^{-1}$$
+$$p_\theta(z_1)*\partial z_1 = p_\theta(z_0)*\partial z_0$$ 
+$$p_\theta(z_1) = p_\theta(z_0)* \frac{\partial z_0}{\partial z_1}$$             
+$$p_\theta(z_1) = p_\theta(z_0)* |\frac{\partial z_0}{\partial z_1}|$$             (since probabilities are always > 0)
+$$p_\theta(z_1) = p_\theta(z_0)* |\frac{\partial z_0}{\partial f_1(z_0)}|$$         ($z_1 = f_1(z_0)$)
+$$p_\theta(z_1) = p_\theta(z_0)* |\frac{\partial f_1(z_0)}{\partial z_0}|^{-1}$$
 
 In the multivariate case ($R^D \rightarrow R^D$) this generalises to : 
 
-
-                        $$p_\theta(z_1) = p_\theta(z_0)* |\det(\frac{\partial f_1(z_0)}{\partial z_0})|^{-1}$$ 
+$$p_\theta(z_1) = p_\theta(z_0)* |\det(\frac{\partial f_1(z_0)}{\partial z_0})|^{-1}$$ 
 
 Considering the sequence of compositional transformations $f_i's$, one obtains :
 
-
-                        $$p_\theta(z_k) = p_\theta(z_0)* \prod_{i=1..k}|\det(\frac{\partial f_i}{\partial z_{i-1}})|^{-1}$$       
+$$p_\theta(z_k) = p_\theta(z_0)* \prod_{i=1..k}|\det(\frac{\partial f_i}{\partial z_{i-1}})|^{-1}$$       
 
 The term on the right i.e. determinant of the Jacobian accounts for the change of $\delta$ volume induced by the transformation. It serves to normalize the transformed distribution locally, after each flow through a transformation, hence the name, Normalizing Flows. 
 
@@ -99,28 +95,25 @@ In this case, the bijective functions and the initial distribution are given. Sa
 
 ## Density Estimation using Maximum Likelihood
 
-In this case a dataset  $\{a_1, a_2,....,a_n\}$ is provided and the objective is to learn the probability density function $p_\theta(A)$ to which the points belong. An initial density $p_\theta(z_0)$ is chosen. 
+In this case a dataset $\{a_1, a_2,....,a_n\}$ is provided and the objective is to learn the probability density function $p_\theta(A)$ to which the points belong. An initial density $p_\theta(z_0)$ is chosen. 
 
 For each $a_i$ we have : 
 
-                            $$p_\theta(a_i) = p_\theta(z_i)* |\det(\frac{\partial f(z_i)}{\partial z_i})|^{-1}$$            where, $$a_i = f(z_i)$$
+$$p_\theta(a_i) = p_\theta(z_i)* |\det(\frac{\partial f(z_i)}{\partial z_i})|^{-1}$$            where, $a_i = f(z_i)$
 
-
-                            $$\prod_{i=1}^n p_\theta(a_i) =\prod_{i=1}^n [p_\theta(z_i)* |\det(\frac{\partial f(z_i)}{\partial z_i})|^{-1}]$$     
+$$\prod_{i=1}^n p_\theta(a_i) =\prod_{i=1}^n [p_\theta(z_i)* |\det(\frac{\partial f(z_i)}{\partial z_i})|^{-1}]$$     
 
 We need to maximize the above over all possible flows $f$ to find the flow $\hat{f}$ that maximizes the probability.
 
-                                
-                            $$\hat{f} =\text{arg max}_f \text{ }\prod_{i=1}^n [p_\theta(z_i)* |\det(\frac{\partial f(z_i)}{\partial z_i})|^{-1}]$$ 
+$$\hat{f} =\text{arg max}_f \text{ }\prod_{i=1}^n [p_\theta(z_i)* |\det(\frac{\partial f(z_i)}{\partial z_i})|^{-1}]$$ 
 
 Using log likelihood maximization we arrive at : 
 
+$$\hat{f} =\text{arg max}_f \text{ }\sum_{i=1}^n [log(p_\theta(z_i)) - log(|\det(\frac{\partial f(z_i)}{\partial z_i})|)]$$
 
-                            $$\hat{f} =\text{arg max}_f \text{ }\sum_{i=1}^n [log(p_\theta(z_i)) - log(|\det(\frac{\partial f(z_i)}{\partial z_i})|)]$$
+The equation shown above is used during training for density estimation. However, since we only know $a_i's$ the only way to find $z_i's$ which are used, is to find the inverse mapping i.e. $z_i = f^{-1}(a_i)$ .  So for density estimation and training, the calculation of both the inverse and determinant of the Jacobian are required. 
 
-The equation shown above is used during training for density estimation. However, since we only know $$a_i's$$ the only way to find $z_i's$ which are used, is to find the inverse mapping i.e. $z_i = f^{-1}(a_i)$ .  So for density estimation and training, the calculation of both the inverse and determinant of the Jacobian are required. 
-
-However, calculating the inverse and the determinant of the Jacobian of a sequence of high dimensional transformations can be very time consuming (for dimensionality d matrix, both are of complexity $$O(d^3)$$). There are various tricks that are used to reduce the complexity of these two operations, one of the popular ones being the use of triangular maps. 
+However, calculating the inverse and the determinant of the Jacobian of a sequence of high dimensional transformations can be very time consuming (for dimensionality d matrix, both are of complexity $O(d^3)$). There are various tricks that are used to reduce the complexity of these two operations, one of the popular ones being the use of triangular maps. 
 
 
 ## Triangular maps: 
