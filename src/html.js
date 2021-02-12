@@ -5,7 +5,7 @@ const MathJaxConfig = `
 window.MathJax = {
   tex2jax: {
     inlineMath: [['$', '$'] ],
-    displayMath: [['$$', '$$'] ],
+    displayMath: [['\[', '\]'] ],
     processEscapes: true,
     processEnvironments: true,
     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
