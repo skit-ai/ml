@@ -3,6 +3,7 @@
 <url> <loc>https://vernacular-ai.github.io/ml/ml/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vernacular-ai.github.io/ml/ml/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vernacular-ai.github.io/ml/ml/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vernacular-ai.github.io/ml/ml/migrating-blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vernacular-ai.github.io/ml/ml/emnlp-2020</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vernacular-ai.github.io/ml/ml/part-1-introducing-normalizing-flows</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://vernacular-ai.github.io/ml/ml/interspeech-2020</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
